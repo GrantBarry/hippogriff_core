@@ -1,0 +1,8 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: Test Company
+  legal_name: Test Company LLC
+  email: testco@testing.co
+  phone: 555-123-4567
+  fax: 555-987-6543
