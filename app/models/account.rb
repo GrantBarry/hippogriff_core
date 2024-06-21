@@ -16,4 +16,5 @@ class Account < ApplicationRecord
 
   has_one :website, dependent: :destroy
   has_many :agents, dependent: :destroy
+  has_many :properties, through: :agents
 end
