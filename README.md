@@ -21,6 +21,12 @@ Or install it yourself as:
 $ gem install hippogriff_core
 ```
 
+### Installing migrations
+Run the following command to copy over the migrations:
+```bash
+$ rails hippogriff_core_engine:install:migrations
+```
+
 ## Contributing
 Contribution directions go here.
 
