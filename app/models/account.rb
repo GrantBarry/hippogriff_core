@@ -13,4 +13,6 @@ class Account < ApplicationRecord
 
   validates :fax, uniqueness: { case_sensitive: false }
   normalizes :fax, with: ->(value) { value.strip }
+
+  has_one :website, dependent: :destroy
 end
