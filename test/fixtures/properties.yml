@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:  agent: one
+  internal_id: MyString
+  name: MyString
+  building: MyString
+  estate: MyString
+  floor_level: MyString
+  floor: MyString
+  unit_suite_shop: MyString
+  local_council: MyString
+  land_area_description: MyString
+  hard_stand_yard_description: MyString
+  headline: MyString
+  grabline: MyString
+  keywords: MyString
+  parking_spaces: 1
+  parking_commentslifts_escalators_travelators: MyString
+  clear_span_columns: MyString
+  lot_number: MyString
+  crane: MyString
+  entrances_roller_doors_container_access: MyString
+  zoning: MyString
+  disability_access: MyString
+  rating: MyString
+  office_area: 9.99
+  warehouse_area: 9.99
+  showroom_area: 9.99
+  storage_area: 9.99
+  production_area: 9.99
+  trading_area: 9.99
+  floor_area: 9.99
+  land_area: 9.99
+  hard_stand_yard_area: 9.99
+  min_clearance_height: 9.99
+  max_clearance_height: 9.99
+  calculated_building_area: 9.99

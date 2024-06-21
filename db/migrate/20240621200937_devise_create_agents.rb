@@ -35,7 +35,6 @@ class DeviseCreateAgents < ActiveRecord::Migration[7.1]
       t.belongs_to :account, null: false, foreign_key: true, type: :uuid, index: true
       t.string :first_name
       t.string :last_name
-      t.string :email
       t.string :mobile
       t.string :phone
       t.string :fax
