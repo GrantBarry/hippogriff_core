@@ -39,6 +39,8 @@ class DeviseCreateAgents < ActiveRecord::Migration[7.1]
       t.string :phone
       t.string :fax
 
+      t.integer :role, default: 0
+
       t.timestamps null: false
     end
 
