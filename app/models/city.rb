@@ -2,6 +2,8 @@ class City < ApplicationRecord
   belongs_to :state
   belongs_to :district, optional: true
 
+  scope :active, -> { joins(:properties).merge(Current.account.properties) }
+
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :state_id }
   normalizes :name, with: ->(value) { value.strip }
 
@@ -9,5 +11,5 @@ class City < ApplicationRecord
 
   validates :slug, presence: true, uniqueness: true
 
-  # has_many :postal_codes, dependent: :delete_all
+  has_many :postal_codes, dependent: :delete_all
 end
