@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_07_092635) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_07_115829) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -100,6 +100,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_092635) do
     t.index ["state_id"], name: "index_districts_on_state_id"
   end
 
+  create_table "enquiries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type"
+    t.uuid "account_id", null: false
+    t.uuid "agent_id"
+    t.bigint "property_id"
+    t.uuid "contact_id"
+    t.datetime "enquired_at"
+    t.string "message"
+    t.string "source_enquiry_id"
+    t.string "source_reference_id"
+    t.index ["account_id"], name: "index_enquiries_on_account_id"
+    t.index ["agent_id"], name: "index_enquiries_on_agent_id"
+    t.index ["contact_id"], name: "index_enquiries_on_contact_id"
+    t.index ["property_id"], name: "index_enquiries_on_property_id"
+  end
+
   create_table "postal_codes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "city_id", null: false
     t.string "postal_code"
@@ -186,6 +202,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_092635) do
   add_foreign_key "contacts", "accounts"
   add_foreign_key "contacts", "agents"
   add_foreign_key "districts", "states"
+  add_foreign_key "enquiries", "accounts"
+  add_foreign_key "enquiries", "agents"
+  add_foreign_key "enquiries", "contacts"
+  add_foreign_key "enquiries", "properties"
   add_foreign_key "postal_codes", "cities"
   add_foreign_key "properties", "agents"
   add_foreign_key "states", "countries"

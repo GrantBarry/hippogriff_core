@@ -1,0 +1,12 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  account: one
+  agent: one
+  property: one
+  enquirer: one
+  enquired_at: 2024-07-07 13:58:29
+  message: MyString
+  source_enquiry_id: MyString
+  source_reference_id: MyString
