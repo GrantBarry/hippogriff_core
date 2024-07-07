@@ -105,14 +105,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_115829) do
     t.uuid "account_id", null: false
     t.uuid "agent_id"
     t.bigint "property_id"
-    t.uuid "contact_id"
     t.datetime "enquired_at"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "company_name"
+    t.string "email"
+    t.string "mobile"
     t.string "message"
     t.string "source_enquiry_id"
     t.string "source_reference_id"
     t.index ["account_id"], name: "index_enquiries_on_account_id"
     t.index ["agent_id"], name: "index_enquiries_on_agent_id"
-    t.index ["contact_id"], name: "index_enquiries_on_contact_id"
     t.index ["property_id"], name: "index_enquiries_on_property_id"
   end
 
@@ -204,7 +207,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_115829) do
   add_foreign_key "districts", "states"
   add_foreign_key "enquiries", "accounts"
   add_foreign_key "enquiries", "agents"
-  add_foreign_key "enquiries", "contacts"
   add_foreign_key "enquiries", "properties"
   add_foreign_key "postal_codes", "cities"
   add_foreign_key "properties", "agents"

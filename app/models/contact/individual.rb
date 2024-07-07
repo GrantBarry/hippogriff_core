@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Contact::Individual < Contact
+  include Nameable
+
   belongs_to :business, optional: true
 
   scope :visible_by, ->(agent) { where(share: true).or(Contact::Individual.where(agent_id: agent.id)) }

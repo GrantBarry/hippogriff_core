@@ -5,8 +5,12 @@ class CreateEnquiries < ActiveRecord::Migration[7.1]
       t.belongs_to :account,  null: false, foreign_key: true, type: :uuid
       t.belongs_to :agent,    null: true,  foreign_key: true, type: :uuid
       t.belongs_to :property, null: true,  foreign_key: true
-      t.belongs_to :contact, null: true,   foreign_key: true, type: :uuid
       t.datetime   :enquired_at
+      t.string     :first_name
+      t.string     :last_name
+      t.string     :company_name
+      t.string     :email
+      t.string     :mobile
       t.string     :message
       t.string     :source_enquiry_id
       t.string     :source_reference_id
