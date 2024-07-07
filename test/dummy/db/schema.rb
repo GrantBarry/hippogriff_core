@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_21_202018) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_07_092635) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -42,11 +42,70 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_21_202018) do
     t.string "mobile"
     t.string "phone"
     t.string "fax"
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_agents_on_account_id"
     t.index ["email"], name: "index_agents_on_email", unique: true
     t.index ["reset_password_token"], name: "index_agents_on_reset_password_token", unique: true
+  end
+
+  create_table "cities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "state_id", null: false
+    t.uuid "district_id"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["district_id"], name: "index_cities_on_district_id"
+    t.index ["state_id"], name: "index_cities_on_state_id"
+  end
+
+  create_table "contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type"
+    t.uuid "agent_id", null: false
+    t.uuid "account_id", null: false
+    t.boolean "share", default: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "business_name"
+    t.string "legal_name"
+    t.string "job_title"
+    t.string "email"
+    t.string "phone"
+    t.string "mobile"
+    t.string "fax"
+    t.string "url"
+    t.string "registration"
+    t.string "source_id"
+    t.uuid "business_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_contacts_on_account_id"
+    t.index ["agent_id"], name: "index_contacts_on_agent_id"
+  end
+
+  create_table "countries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false, comment: "Country name"
+    t.string "code", null: false, comment: "ISO 3166-1 alpha-2 code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "districts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "state_id", null: false, comment: "State"
+    t.string "name", null: false, comment: "District name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_districts_on_state_id"
+  end
+
+  create_table "postal_codes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "city_id", null: false
+    t.string "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_postal_codes_on_city_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -92,6 +151,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_21_202018) do
     t.index ["type"], name: "index_properties_on_type"
   end
 
+  create_table "states", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "country_id", null: false, comment: "Country"
+    t.string "name", null: false, comment: "State name"
+    t.string "abbreviation", null: false, comment: "Local abbreviation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_states_on_country_id"
+  end
+
   create_table "website_domains", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "website_id", null: false
     t.string "domain", null: false
@@ -113,7 +181,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_21_202018) do
   end
 
   add_foreign_key "agents", "accounts"
+  add_foreign_key "cities", "districts"
+  add_foreign_key "cities", "states"
+  add_foreign_key "contacts", "accounts"
+  add_foreign_key "contacts", "agents"
+  add_foreign_key "districts", "states"
+  add_foreign_key "postal_codes", "cities"
   add_foreign_key "properties", "agents"
+  add_foreign_key "states", "countries"
   add_foreign_key "website_domains", "websites"
   add_foreign_key "websites", "accounts"
 end

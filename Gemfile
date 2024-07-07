@@ -10,5 +10,7 @@ gem 'puma'
 
 gem 'pg'
 
+gem 'name_of_person'
+
 # Start debugger with binding.b [https://github.com/ruby/debug]
 # gem 'debug', '>= 1.0.0'

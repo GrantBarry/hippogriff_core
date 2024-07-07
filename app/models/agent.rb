@@ -1,4 +1,6 @@
 class Agent < ApplicationRecord
+  include Emailable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :registerable and :omniauthable
   devise :database_authenticatable, :trackable,
@@ -12,7 +14,6 @@ class Agent < ApplicationRecord
   normalizes :first_name, :last_name, with: ->(value) { value.strip }
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }
-  normalizes :email, with: ->(value) { value.downcase.strip }
 
   validates :mobile, :phone, :fax, uniqueness: { case_sensitive: false }
   normalizes :mobile, :phone, :fax, with: ->(value) { value.strip }

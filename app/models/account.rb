@@ -1,4 +1,6 @@
 class Account < ApplicationRecord
+  include Emailable
+
   validates :company_name, presence: true, uniqueness: { case_sensitive: false }
   normalizes :company_name, with: ->(value) { value.strip }
 
@@ -6,7 +8,6 @@ class Account < ApplicationRecord
   normalizes :legal_name, with: ->(value) { value.strip }
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }
-  normalizes :email, with: ->(value) { value.strip }
 
   validates :phone, uniqueness: { case_sensitive: false }
   normalizes :phone, with: ->(value) { value.strip }
