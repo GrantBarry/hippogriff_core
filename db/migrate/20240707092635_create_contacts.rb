@@ -7,7 +7,7 @@ class CreateContacts < ActiveRecord::Migration[7.1]
       t.boolean :share, default: false
       t.string :first_name
       t.string :last_name
-      t.string :business_name
+      t.string :company_name
       t.string :legal_name
       t.string :job_title
       t.string :email

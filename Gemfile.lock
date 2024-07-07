@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hippogriff_core (0.3.0)
+    hippogriff_core (0.3.1)
       devise (>= 4.9)
       rails (>= 7.1.3.4)
 

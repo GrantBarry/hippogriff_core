@@ -14,7 +14,7 @@ class MinimumBusinessRequiredFields < ActiveModel::Validator
   private
 
   def minimum_required_fields_missing?
-    @object.business_name.blank? &&
+    @object.company_name.blank? &&
     @object.legal_name.blank? &&
     @object.email.blank? &&
     @object.phone.blank?

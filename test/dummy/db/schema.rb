@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_115829) do
     t.boolean "share", default: false
     t.string "first_name"
     t.string "last_name"
-    t.string "business_name"
+    t.string "company_name"
     t.string "legal_name"
     t.string "job_title"
     t.string "email"

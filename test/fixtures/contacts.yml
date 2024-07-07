@@ -7,7 +7,7 @@ one:
   share: false
   first_name: MyString
   last_name: MyString
-  business_name: MyString
+  company_name: MyString
   legal_name: MyString
   job_title: MyString
   email: MyString
@@ -26,7 +26,7 @@ two:
   share: false
   first_name: MyString
   last_name: MyString
-  business_name: MyString
+  company_name: MyString
   legal_name: MyString
   job_title: MyString
   email: MyString

@@ -9,4 +9,6 @@ class Enquiry < ApplicationRecord
 
   validates :account_id, presence: true
   validates :enquirer_id, presence: true
+
+  accepts_nested_attributes_for :enquirer
 end
