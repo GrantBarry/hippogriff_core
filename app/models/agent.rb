@@ -1,5 +1,5 @@
 class Agent < ApplicationRecord
-  include Emailable
+  include Emailable, Role
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :registerable and :omniauthable
@@ -7,8 +7,6 @@ class Agent < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :account
-
-  enum role: %i[agent admin account_manager]
 
   validates :first_name, :last_name, presence: true
   normalizes :first_name, :last_name, with: ->(value) { value.strip }
