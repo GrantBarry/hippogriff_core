@@ -1,5 +1,6 @@
 class Agent < ApplicationRecord
-  include Emailable, Role
+  include Role
+  include Emailable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :registerable and :omniauthable
@@ -17,4 +18,6 @@ class Agent < ApplicationRecord
   normalizes :mobile, :phone, :fax, with: ->(value) { value.strip }
 
   has_many :properties, dependent: :delete_all
+
+  has_person_name
 end
