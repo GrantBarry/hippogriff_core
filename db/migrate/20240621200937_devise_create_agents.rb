@@ -38,6 +38,7 @@ class DeviseCreateAgents < ActiveRecord::Migration[7.1]
       t.string :mobile
       t.string :phone
       t.string :fax
+      t.string :time_zone, default: 'UTC', null: false
 
       t.integer :role, default: 0, null: false
 
