@@ -12,6 +12,6 @@ module Agent::Role
   end
 
   def can_manage_account?
-    account_manager? && Account.current == account
+    account_manager? && Current.account == account
   end
 end
