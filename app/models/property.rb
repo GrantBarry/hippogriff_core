@@ -4,7 +4,11 @@ class Property < ApplicationRecord
 
   belongs_to :agent
 
+  has_one :contract, dependent: :destroy
+
   scope :latest_n, ->(n) { order(:updated_at).limit(n) }
+  scope :for_sale,  -> { joins(:contract).where(contract: { for_sale:  true }) }
+  scope :for_lease, -> { joins(:contract).where(contract: { for_lease: true }) }
 
   # Building area = all areas (except land_area and hard_stand_yard_area)
   def building_area

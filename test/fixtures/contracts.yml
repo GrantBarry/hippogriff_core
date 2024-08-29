@@ -1,0 +1,65 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  property: one
+  eoi_close_on: 2024-08-29
+  eoi_inspection_on: 2024-08-29
+  eoi_minimum_price_cents: 1
+  eoi_target_price_cents: 1
+  for_lease: false
+  for_sale: false
+  lease_cleaning_cents: 1
+  lease_commencement_on: 2024-08-29
+  lease_covered_parking_sapce_cents: 1
+  lease_escalation_formulae: MyString
+  lease_escalation_rate: MyText
+  lease_expires_on: 2024-08-29
+  lease_gross_rent: 9.99
+  lease_net_rent: 9.99
+  lease_on_grade_parking_space_cents: 1
+  lease_other_rental_costs_cents: 1
+  lease_outgoings: 9.99
+  lease_rent_review_on: 2024-08-29
+  lease_term: MyString
+  private_treaty_minimum_price_cents: 1
+  private_treaty_target_price_cents: 1
+  sale_actual_sale_price_cents: 1
+  sale_auction_on: 2024-08-29
+  sale_auction_venue: MyString
+  sale_inspection_on: 2024-08-29
+  sale_price_cents: 1
+  sale_price_from_cents: 1
+  sale_price_to_cents: 1
+  sale_reserve_price_cents: 1
+
+two:
+  property: two
+  eoi_close_on: 2024-08-29
+  eoi_inspection_on: 2024-08-29
+  eoi_minimum_price_cents: 1
+  eoi_target_price_cents: 1
+  for_lease: false
+  for_sale: false
+  lease_cleaning_cents: 1
+  lease_commencement_on: 2024-08-29
+  lease_covered_parking_sapce_cents: 1
+  lease_escalation_formulae: MyString
+  lease_escalation_rate: MyText
+  lease_expires_on: 2024-08-29
+  lease_gross_rent: 9.99
+  lease_net_rent: 9.99
+  lease_on_grade_parking_space_cents: 1
+  lease_other_rental_costs_cents: 1
+  lease_outgoings: 9.99
+  lease_rent_review_on: 2024-08-29
+  lease_term: MyString
+  private_treaty_minimum_price_cents: 1
+  private_treaty_target_price_cents: 1
+  sale_actual_sale_price_cents: 1
+  sale_auction_on: 2024-08-29
+  sale_auction_venue: MyString
+  sale_inspection_on: 2024-08-29
+  sale_price_cents: 1
+  sale_price_from_cents: 1
+  sale_price_to_cents: 1
+  sale_reserve_price_cents: 1
