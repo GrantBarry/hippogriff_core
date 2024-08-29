@@ -9,6 +9,4 @@ class Enquiry < ApplicationRecord
 
   validates :message, presence: true
   normalizes :message, with: ->(value) { value.strip }
-
-  accepts_nested_attributes_for :enquirer
 end
