@@ -1,6 +1,6 @@
 class CreateContacts < ActiveRecord::Migration[7.1]
   def change
-    return unless table_exists?(:contacts)
+    return if table_exists?(:contacts)
 
     create_table :contacts, id: :uuid do |t|
       t.string :type

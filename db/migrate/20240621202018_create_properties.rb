@@ -1,6 +1,6 @@
 class CreateProperties < ActiveRecord::Migration[7.1]
   def change
-    return unless table_exists?(:properties)
+    return if table_exists?(:properties)
 
     create_table :properties do |t|
       t.string :type, index: true

@@ -1,6 +1,6 @@
 class CreateEnquiries < ActiveRecord::Migration[7.1]
   def change
-    return unless table_exists?(:enquiries)
+    return if table_exists?(:enquiries)
 
     create_table :enquiries, id: :uuid do |t|
       t.string     :type

@@ -2,7 +2,7 @@
 
 class DeviseCreateAgents < ActiveRecord::Migration[7.1]
   def change
-    return unless table_exists?(:agents)
+    return if table_exists?(:agents)
 
     create_table :agents, id: :uuid do |t|
       ## Database authenticatable

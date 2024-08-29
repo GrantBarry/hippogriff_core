@@ -1,6 +1,6 @@
 class CreateStates < ActiveRecord::Migration[7.1]
   def change
-    return unless table_exists?(:states)
+    return if table_exists?(:states)
 
     create_table :states, id: :uuid do |t|
       t.belongs_to :country, null: false, foreign_key: true, type: :uuid, index: true, comment: 'Country'

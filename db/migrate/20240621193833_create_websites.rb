@@ -1,6 +1,6 @@
 class CreateWebsites < ActiveRecord::Migration[7.1]
   def change
-    return unless table_exists?(:websites)
+    return if table_exists?(:websites)
 
     create_table :websites, id: :uuid do |t|
       t.belongs_to :account, null: false, foreign_key: true, type: :uuid

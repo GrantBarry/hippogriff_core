@@ -1,6 +1,6 @@
 class CreateCities < ActiveRecord::Migration[7.1]
   def change
-    return unless table_exists?(:cities)
+    return if table_exists?(:cities)
 
     create_table :cities, id: :uuid do |t|
       t.belongs_to :state, null: false, foreign_key: true, type: :uuid, index: true
