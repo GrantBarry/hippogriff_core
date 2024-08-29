@@ -1,5 +1,7 @@
 class CreateContacts < ActiveRecord::Migration[7.1]
   def change
+    return unless table_exists?(:contacts)
+
     create_table :contacts, id: :uuid do |t|
       t.string :type
       t.belongs_to :agent,   null: false, foreign_key: true, type: :uuid

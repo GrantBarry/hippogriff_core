@@ -1,5 +1,7 @@
 class CreateProperties < ActiveRecord::Migration[7.1]
   def change
+    return unless table_exists?(:properties)
+
     create_table :properties do |t|
       t.string :type, index: true
       t.belongs_to :agent, null: false, foreign_key: true, type: :uuid, index: true
