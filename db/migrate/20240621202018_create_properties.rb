@@ -39,6 +39,7 @@ class CreateProperties < ActiveRecord::Migration[7.1]
       t.decimal :min_clearance_height, precision: 10, scale: 2
       t.decimal :max_clearance_height, precision: 10, scale: 2
       t.decimal :calculated_building_area
+      t.boolean :share, default: false
 
       t.timestamps
     end

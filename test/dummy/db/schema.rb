@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_07_115829) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_29_032040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -83,6 +83,42 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_07_115829) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_contacts_on_account_id"
     t.index ["agent_id"], name: "index_contacts_on_agent_id"
+  end
+
+  create_table "contracts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "property_id", null: false
+    t.date "eoi_close_on"
+    t.date "eoi_inspection_on"
+    t.bigint "eoi_minimum_price_cents"
+    t.bigint "eoi_target_price_cents"
+    t.boolean "for_lease"
+    t.boolean "for_sale"
+    t.bigint "lease_cleaning_cents"
+    t.date "lease_commencement_on"
+    t.bigint "lease_covered_parking_sapce_cents"
+    t.string "lease_escalation_formulae"
+    t.text "lease_escalation_rate"
+    t.date "lease_expires_on"
+    t.decimal "lease_gross_rent"
+    t.decimal "lease_net_rent"
+    t.bigint "lease_on_grade_parking_space_cents"
+    t.bigint "lease_other_rental_costs_cents"
+    t.decimal "lease_outgoings"
+    t.date "lease_rent_review_on"
+    t.string "lease_term"
+    t.bigint "private_treaty_minimum_price_cents"
+    t.bigint "private_treaty_target_price_cents"
+    t.bigint "sale_actual_sale_price_cents"
+    t.date "sale_auction_on"
+    t.string "sale_auction_venue"
+    t.date "sale_inspection_on"
+    t.bigint "sale_price_cents"
+    t.bigint "sale_price_from_cents"
+    t.bigint "sale_price_to_cents"
+    t.bigint "sale_reserve_price_cents"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_contracts_on_property_id"
   end
 
   create_table "countries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -204,6 +240,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_07_115829) do
   add_foreign_key "cities", "states"
   add_foreign_key "contacts", "accounts"
   add_foreign_key "contacts", "agents"
+  add_foreign_key "contracts", "properties"
   add_foreign_key "districts", "states"
   add_foreign_key "enquiries", "accounts"
   add_foreign_key "enquiries", "agents"
