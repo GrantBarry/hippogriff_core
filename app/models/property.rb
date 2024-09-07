@@ -1,4 +1,6 @@
 class Property < ApplicationRecord
+  include MoneytaryAttributes
+
   after_create_commit :generate_internal_id
   before_save :calculated_building_area
 
