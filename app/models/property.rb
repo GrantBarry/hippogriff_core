@@ -15,6 +15,8 @@ class Property < ApplicationRecord
 
   monetary_attribute :naming_rights_cost
 
+  delegate :account, to: :agent
+
   # Building area = all areas (except land_area and hard_stand_yard_area)
   def building_area
     building_area_attributes
