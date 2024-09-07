@@ -11,6 +11,8 @@ class Property < ApplicationRecord
   scope :for_sale,  -> { joins(:contract).where(contract: { for_sale:  true }) }
   scope :for_lease, -> { joins(:contract).where(contract: { for_lease: true }) }
 
+  monetary_attribute :naming_rights_cost
+
   # Building area = all areas (except land_area and hard_stand_yard_area)
   def building_area
     building_area_attributes
