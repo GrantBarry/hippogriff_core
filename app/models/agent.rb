@@ -18,10 +18,10 @@ class Agent < ApplicationRecord
   normalizes :mobile, :phone, :fax, with: ->(value) { value.strip }
 
   has_many :properties,             dependent: :destroy
-  has_many :retail_properties,      dependent: :destroy
-  has_many :industrial_properties,  dependent: :destroy
-  has_many :commercial_properties,  dependent: :destroy
-  has_many :residential_properties, dependent: :destroy
+  has_many :retail_properties,      dependent: :destroy, class_name: 'Property::Retail'
+  has_many :industrial_properties,  dependent: :destroy, class_name: 'Property::Industrial'
+  has_many :commercial_properties,  dependent: :destroy, class_name: 'Property::Commercial'
+  has_many :residential_properties, dependent: :destroy, class_name: 'Property::Residential'
 
   has_person_name
 end
