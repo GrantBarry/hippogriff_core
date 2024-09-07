@@ -27,6 +27,8 @@ class CreateProperties < ActiveRecord::Migration[7.1]
       t.string :zoning
       t.string :disability_access
       t.string :rating
+      t.string :naming_rights
+      t.bigint :naming_rights_cost_cents
       t.decimal :office_area, precision: 10, scale: 2
       t.decimal :warehouse_area, precision: 10, scale: 2
       t.decimal :showroom_area, precision: 10, scale: 2
