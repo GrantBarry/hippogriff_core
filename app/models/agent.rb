@@ -17,7 +17,11 @@ class Agent < ApplicationRecord
   validates :mobile, :phone, :fax, uniqueness: { case_sensitive: false }
   normalizes :mobile, :phone, :fax, with: ->(value) { value.strip }
 
-  has_many :properties, dependent: :delete_all
+  has_many :properties,             dependent: :destroy
+  has_many :retail_properties,      dependent: :destroy
+  has_many :industrial_properties,  dependent: :destroy
+  has_many :commercial_properties,  dependent: :destroy
+  has_many :residential_properties, dependent: :destroy
 
   has_person_name
 end
