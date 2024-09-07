@@ -5,6 +5,7 @@ class Property < ApplicationRecord
   belongs_to :agent
 
   has_one :contract, dependent: :destroy
+  has_many :property_usages, dependent: :delete_all
 
   scope :latest_n, ->(n) { order(:updated_at).limit(n) }
   scope :for_sale,  -> { joins(:contract).where(contract: { for_sale:  true }) }
