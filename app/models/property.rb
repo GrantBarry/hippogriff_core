@@ -10,6 +10,9 @@ class Property < ApplicationRecord
   has_one :contract, dependent: :destroy
   has_many :property_usages, dependent: :delete_all
 
+  has_many_attached :photos
+  has_many_attached :files
+
   scope :latest_n, ->(n) { order(:updated_at).limit(n) }
   scope :for_sale,  -> { joins(:contract).where(contract: { for_sale:  true }) }
   scope :for_lease, -> { joins(:contract).where(contract: { for_lease: true }) }
