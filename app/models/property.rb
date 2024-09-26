@@ -38,6 +38,13 @@ class Property < ApplicationRecord
       .reduce(0.0, :+)
   end
 
+  def address
+    return nil if city.blank?
+
+    # [street_address, city.name, city.state.name].compact_blank.join(', ')
+    [city.name, city.state.name].compact_blank.join(', ')
+  end
+
   private
 
   def generate_internal_id
