@@ -6,6 +6,8 @@ class Property < ApplicationRecord
   before_save :calculated_building_area
 
   belongs_to :agent
+  belongs_to :city, optional: true
+  belongs_to :postal_code, optional: true
 
   has_one :contract, dependent: :destroy
   has_many :property_usages, dependent: :delete_all

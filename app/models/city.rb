@@ -12,4 +12,5 @@ class City < ApplicationRecord
   validates :slug, presence: true, uniqueness: true
 
   has_many :postal_codes, dependent: :delete_all
+  has_many :properties, dependent: :nullify
 end

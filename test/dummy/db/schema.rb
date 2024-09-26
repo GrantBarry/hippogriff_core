@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_07_033857) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_26_183821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -23,6 +23,34 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_07_033857) do
     t.string "fax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "agents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -202,7 +230,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_07_033857) do
     t.decimal "calculated_building_area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "city_id"
+    t.uuid "postal_code_id"
     t.index ["agent_id"], name: "index_properties_on_agent_id"
+    t.index ["city_id"], name: "index_properties_on_city_id"
+    t.index ["postal_code_id"], name: "index_properties_on_postal_code_id"
     t.index ["type"], name: "index_properties_on_type"
   end
 
@@ -248,6 +280,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_07_033857) do
     t.index ["account_id"], name: "index_websites_on_account_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "agents", "accounts"
   add_foreign_key "cities", "districts"
   add_foreign_key "cities", "states"
@@ -260,6 +294,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_07_033857) do
   add_foreign_key "enquiries", "properties"
   add_foreign_key "postal_codes", "cities"
   add_foreign_key "properties", "agents"
+  add_foreign_key "properties", "cities"
+  add_foreign_key "properties", "postal_codes"
   add_foreign_key "property_usages", "properties"
   add_foreign_key "property_usages", "usages"
   add_foreign_key "states", "countries"

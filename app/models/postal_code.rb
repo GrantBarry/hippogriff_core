@@ -3,4 +3,6 @@ class PostalCode < ApplicationRecord
 
   validates :postal_code, presence: true, uniqueness: { case_sensitive: false, scope: :city_id }
   normalizes :postal_code, with: ->(value) { value.strip }
+
+  has_many :properties, dependent: :nullify
 end
