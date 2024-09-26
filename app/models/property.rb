@@ -18,6 +18,10 @@ class Property < ApplicationRecord
   scope :latest_n, ->(n) { order(:updated_at).limit(n) }
   scope :for_sale,  -> { joins(:contract).where(contract: { for_sale:  true }) }
   scope :for_lease, -> { joins(:contract).where(contract: { for_lease: true }) }
+  scope :commercial, -> { where(property_usages: { type: 'Property::Commercial' }) }
+  scope :industrial, -> { where(property_usages: { type: 'Property::Industrial' }) }
+  scope :retail,     -> { where(property_usages: { type: 'Property::Retail' }) }
+  scope :residential, -> { where(property_usages: { type: 'Property::Residential' }) }
 
   monetary_attribute :naming_rights_cost
 
