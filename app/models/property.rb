@@ -20,7 +20,7 @@ class Property < ApplicationRecord
   monetary_attribute :naming_rights_cost
 
   delegate :account, to: :agent
-  delegate :for_sale?, :for_lease?, to: :contract
+  delegate :for_sale?, :for_lease?, to: :contract, allow_nil: true
 
   # Building area = all areas (except land_area and hard_stand_yard_area)
   def building_area
