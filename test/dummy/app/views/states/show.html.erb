@@ -1,0 +1,13 @@
+<h1><%= @state.name %></h1>
+<div>
+  <strong>Name</strong>
+  <%= @state.name %>
+</div>
+<div>
+  <strong>Abbreviation</strong>
+  <%= @state.abbreviation %>
+</div>
+<div>
+  <%= link_to 'Back', country_path(@state.country) %>
+  <%= link_to 'Edit', edit_country_state_path(@state.country, @state) %>
+</div>

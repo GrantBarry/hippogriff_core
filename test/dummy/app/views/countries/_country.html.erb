@@ -1,11 +1,32 @@
 <div>
   <strong>Name</strong>
-  <%= country.name %>
+  <% if current_page?(country) %>
+    <%= country.name %>
+  <% else %>
+    <%= link_to country.name, country %>
+  <% end %>
 </div>
 <div>
   <strong>Code</strong>
   <%= country.code %>
 </div>
+
+<% if current_page?(country) %>
+  <div>
+    <% if country.states.blank? %>
+      <p>No states</p>
+    <% else %>
+      <p>States:</p>
+      <ul>
+        <% country.states.each do |state| %>
+          <li><%= link_to state.name, [country, state] %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= link_to 'Create a new state', new_country_state_path(country) %>
+  </div>
+<% end %>
+
 <div>
   <%= link_to 'Edit', edit_country_path(country) %>
 </div>

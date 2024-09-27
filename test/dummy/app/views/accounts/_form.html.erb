@@ -1,3 +1,6 @@
+<% if account.errors.any? %>
+  <%= render partial: 'shared/form_errors', locals: { form_errors: account } %>
+<% end %>
 <%= form_for account do |form| %>
 
   <div>

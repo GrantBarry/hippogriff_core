@@ -1,6 +1,10 @@
 <div>
   <strong>Company name:</strong>
-  <%= account.company_name %>
+  <% if current_page?(account) %>
+    <%= account.company_name %>
+  <% else %>
+    <%= link_to account.company_name, account %>
+  <% end %>
 </div>
 
 <div>

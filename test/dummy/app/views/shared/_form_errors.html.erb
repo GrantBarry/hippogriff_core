@@ -1,0 +1,8 @@
+<div>
+  <h2><%= pluralize(form_errors.errors.count, "error") %> prohibited this data from being saved:</h2>
+  <ul>
+    <% form_errors.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>

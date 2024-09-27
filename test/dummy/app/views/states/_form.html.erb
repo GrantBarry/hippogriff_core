@@ -1,0 +1,16 @@
+<% if state.errors.any? %>
+  <%= render partial: 'shared/form_errors', locals: { form_errors: state } %>
+<% end %>
+<%= form_for [@country, state] do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :abbreviation %>
+    <%= form.text_field :abbreviation %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
