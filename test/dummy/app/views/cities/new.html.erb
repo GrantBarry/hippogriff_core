@@ -1,0 +1,2 @@
+<h1>New city in <%= @state.name %>, <%= @state.country.name %></h1>
+<%= render partial: 'form', locals: { country: @country, state: @state, city: @city } %>

@@ -1,0 +1,16 @@
+<h1><%= @city.name %></h1>
+<div>
+  <%= link_to 'Edit', edit_country_state_city_path(@city.state.country, @city.state, @city) %>
+</div>
+<div>
+  <strong>Description</strong>
+  <%= @city.description %>
+</div>
+<div>
+  <strong>Name</strong>
+  <%= @city.name %>
+</div>
+<div>
+  <%= link_to 'Back', country_state_path(@city.state.country, @city.state) %>
+  <%= button_to 'Delete', country_state_city_path(@city.state.country, @city.state, @city), method: :delete %>
+</div>

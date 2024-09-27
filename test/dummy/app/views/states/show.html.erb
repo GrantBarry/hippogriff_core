@@ -10,6 +10,9 @@
   <strong>Abbreviation</strong>
   <%= @state.abbreviation %>
 </div>
+<h2>Cities</h2>
+<%= render @state.cities unless @state.cities.blank? %>
+<%= link_to 'New', new_country_state_city_path(@state.country, @state) %>
 <div>
   <%= link_to 'Back', country_path(@state.country) %>
 </div>

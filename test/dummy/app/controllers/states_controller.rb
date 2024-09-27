@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class StatesController < ApplicationController
-  before_action :set_country
+  include SetCountry
+
   before_action :set_state, only: %i[show edit update destroy]
 
   def index
@@ -54,9 +55,5 @@ class StatesController < ApplicationController
 
   def set_state
     @state = @country.states.find(params[:id])
-  end
-
-  def set_country
-    @country = Country.find(params[:country_id])
   end
 end
