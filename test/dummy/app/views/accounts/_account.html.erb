@@ -1,0 +1,27 @@
+<div>
+  <strong>Company name:</strong>
+  <%= account.company_name %>
+</div>
+
+<div>
+  <strong>Legal name:</strong>
+  <%= account.legal_name %>
+</div>
+
+<div>
+  <strong>Email:</strong>
+  <%= account.email %>
+</div>
+
+<div>
+  <strong>Phone:</strong>
+  <%= account.phone %> 
+</div>
+
+<div>
+  <strong>Fax:</strong>
+  <%= account.fax %>
+</div>
+<div>
+  <%= link_to 'Edit', edit_account_path(account) %>
+</div>

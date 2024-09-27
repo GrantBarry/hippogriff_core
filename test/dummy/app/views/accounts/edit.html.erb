@@ -1,0 +1,5 @@
+<h1>Edit <%= @account.company_name %></h1>
+<%= render partial: 'form', locals: { account: @account } %>
+<div>
+  <%= link_to 'Cancel', @account %>
+</div>

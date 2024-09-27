@@ -1,0 +1,9 @@
+<h1>Accounts</h1>
+
+<% if @accounts.blank?%>
+  <p>
+    No accounts found. <%= link_to 'Create one', new_account_path %>
+  </p>
+<% else %>
+  <%= render @accounts %>
+<% end %>
