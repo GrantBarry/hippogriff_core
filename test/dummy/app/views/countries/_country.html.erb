@@ -13,23 +13,22 @@
 
 <% if current_page?(country) %>
   <div>
+    <%= link_to 'Edit', edit_country_path(country) %>
+  </div>
+  <div>
+    <%= button_to 'Delete', country, method: :delete %>
+  </div>
+  <div>
+    <h2>States</h2>
+    <%= link_to 'Create a new state', new_country_state_path(country) %>
     <% if country.states.blank? %>
       <p>No states</p>
     <% else %>
-      <p>States:</p>
       <ul>
         <% country.states.each do |state| %>
           <li><%= link_to state.name, [country, state] %></li>
         <% end %>
       </ul>
     <% end %>
-    <%= link_to 'Create a new state', new_country_state_path(country) %>
   </div>
 <% end %>
-
-<div>
-  <%= link_to 'Edit', edit_country_path(country) %>
-</div>
-<div>
-  <%= button_to 'Delete', country, method: :delete %>
-</div>

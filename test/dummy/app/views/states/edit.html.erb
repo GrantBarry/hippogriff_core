@@ -1,2 +1,3 @@
 <h1>Edit <%= @state.name %></h1>
 <%= render partial: 'form', locals: { state: @state } %>
+<%= link_to 'Cancel', country_state_path(@state.country, @state) %>

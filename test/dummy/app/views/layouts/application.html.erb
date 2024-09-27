@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <%= link_to 'Accounts', accounts_path %>
+        <%= link_to 'Countries', countries_path %>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
