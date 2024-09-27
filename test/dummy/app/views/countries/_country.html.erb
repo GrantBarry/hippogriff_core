@@ -1,0 +1,14 @@
+<div>
+  <strong>Name</strong>
+  <%= country.name %>
+</div>
+<div>
+  <strong>Code</strong>
+  <%= country.code %>
+</div>
+<div>
+  <%= link_to 'Edit', edit_country_path(country) %>
+</div>
+<div>
+  <%= button_to 'Delete', country, method: :delete %>
+</div>
