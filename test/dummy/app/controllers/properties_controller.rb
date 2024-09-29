@@ -30,7 +30,9 @@ class PropertiesController < ApplicationController
   def edit; end
 
   def update
-    if @property.update(property_params)
+    @property.photos.attach(property_params[:new_photos]) if property_params[:new_photos].present?
+    @property.files.attach(property_params[:new_files]) if property_params[:new_files].present?
+    if @property.update(property_params.except(:new_photos, :new_files))
       redirect_to account_property_path(@property.account, @property), notice: 'Property was successfully updated.'
     else
       render :edit
@@ -94,7 +96,11 @@ class PropertiesController < ApplicationController
         :min_clearance_height,
         :max_clearance_height,
         :calculated_building_area,
-        :share
+        :share,
+        :photos,
+        :files,
+        new_photos: [],
+        new_files: []
       )
   end
 end

@@ -1,6 +1,16 @@
 <h1>
   <%= @property.name %>
 </h1>
-<%= button_to 'Delete', account_property_path(@property.account, @property), method: :delete %>
+<h2>Photos</h2>
+<div>
+  <% if @property.photos.blank? %>
+    <p>No photos</p>
+  <% else %>
+    <% @property.photos.each do |photo| %>
+      <%= image_tag photo, style: 'width: 33%' %>
+    <% end %>
+  <% end %>
+</div>
 <%= link_to 'Edit', edit_account_property_path(@property.account, @property) %>
+<%= button_to 'Delete', account_property_path(@property.account, @property), method: :delete %>
 <%= link_to 'Back to account', account_path(@property.account) %>

@@ -161,6 +161,14 @@
     <%= form.check_box :share %>
   </div>
   <div>
+    <%= form.label :photos %>
+    <%= form.file_field :new_photos, multiple: true %>
+  </div>
+  <div>
+    <%= form.label :files %>
+    <%= form.file_field :new_files, multiple: true %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

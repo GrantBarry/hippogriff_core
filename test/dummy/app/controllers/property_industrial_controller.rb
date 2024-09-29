@@ -46,7 +46,11 @@ class PropertyIndustrialController < PropertiesController
         :min_clearance_height,
         :max_clearance_height,
         :calculated_building_area,
-        :share
+        :share,
+        :photos,
+        :files,
+        new_photos: [],
+        new_files: []
       )
   end
 end

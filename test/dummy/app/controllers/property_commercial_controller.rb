@@ -46,7 +46,9 @@ class PropertyCommercialController < PropertiesController
         :min_clearance_height,
         :max_clearance_height,
         :calculated_building_area,
-        :share
+        :share,
+        new_photos: [],
+        new_files: []
       )
   end
 end
