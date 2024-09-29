@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :accounts do
     resources :agents
     resources :properties
+    resources :property_commercial, type: 'Property::Commercial', only: %i[create update]
+    resources :property_industrial, type: 'Property::Industrial', only: %i[create update]
+    resources :property_residential, type: 'Property::Residential', only: %i[create update]
+    resources :property_retail, type: 'Property::Retail', only: %i[create update]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

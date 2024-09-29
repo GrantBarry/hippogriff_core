@@ -5,7 +5,7 @@
 <%= render @account.agents %>
 <h2>Properties</h2>
 <%= link_to 'New property', new_account_property_path(@account) %>
-<%= render @account.properties %>
+<%= render partial: 'properties/property', collection: @account.properties %>
 <div>
   <%= link_to 'Back to accounts', accounts_path %>
 </div>

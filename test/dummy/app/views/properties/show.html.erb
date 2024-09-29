@@ -1,0 +1,6 @@
+<h1>
+  <%= @property.name %>
+</h1>
+<%= button_to 'Delete', account_property_path(@property.account, @property), method: :delete %>
+<%= link_to 'Edit', edit_account_property_path(@property.account, @property) %>
+<%= link_to 'Back to account', account_path(@property.account) %>
