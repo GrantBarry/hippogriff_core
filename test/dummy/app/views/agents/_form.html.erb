@@ -1,0 +1,42 @@
+<%= form_for [agent.account, agent] do |form| %>
+  <%= render partial: 'shared/form_errors', locals: { form_errors: agent } %>
+  <div>
+    <%= form.label :role %>
+    <%= form.select :role, Agent.roles.keys.map { |role| [role.humanize, role] }, prompt: 'Select a Role' %>
+  </div>
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+  <div>
+    <%= form.label :mobile %>
+    <%= form.phone_field :mobile %>
+  </div>
+  <div>
+    <%= form.label :phone %>
+    <%= form.phone_field :phone %>
+  </div>
+  <div>
+    <%= form.label :fax %>
+    <%= form.phone_field :fax %>
+  </div>
+  <div>
+    <%= form.label :time_zone %>
+    <%= form.time_zone_select :time_zone, nil, prompt: 'Select a Time Zone' %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

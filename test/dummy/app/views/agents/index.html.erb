@@ -1,0 +1,9 @@
+<h1>Agents</h1>
+
+<% if @agents.blank?%>
+  <p>
+    No agents found. <%= link_to 'Create one', new_account_agent_path(@account) %>
+  </p>
+<% else %>
+  <%= render @agents %>
+<% end %>

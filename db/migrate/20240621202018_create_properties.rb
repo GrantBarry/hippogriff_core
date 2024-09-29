@@ -19,7 +19,8 @@ class CreateProperties < ActiveRecord::Migration[7.1]
       t.string :grabline
       t.string :keywords
       t.integer :parking_spaces
-      t.string :parking_commentslifts_escalators_travelators
+      t.string :parking_comments
+      t.string :lifts_escalators_travelators
       t.string :clear_span_columns
       t.string :lot_number
       t.string :crane

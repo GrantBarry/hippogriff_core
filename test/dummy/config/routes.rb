@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   draw :addresses
-  resources :accounts
-  resources :properties
+  resources :accounts do
+    resources :agents
+    resources :properties
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

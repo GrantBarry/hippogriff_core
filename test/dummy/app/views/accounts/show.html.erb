@@ -1,5 +1,11 @@
 <h1><%= @account.company_name %></h1>
 <%= render @account %>
+<h2>Agents</h2>
+<%= link_to 'New agent', new_account_agent_path(@account) %>
+<%= render @account.agents %>
+<h2>Properties</h2>
+<%= link_to 'New property', new_account_property_path(@account) %>
+<%= render @account.properties %>
 <div>
   <%= link_to 'Back to accounts', accounts_path %>
 </div>

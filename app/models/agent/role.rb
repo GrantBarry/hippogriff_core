@@ -4,7 +4,7 @@ module Agent::Role
   extend ActiveSupport::Concern
 
   included do
-    enum :role, %i[agent administer account_manager], default: :agent
+    enum :role, %i[agent administrator account_manager], default: :agent
   end
 
   def can_administer?

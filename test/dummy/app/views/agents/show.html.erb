@@ -1,0 +1,38 @@
+<h1><%= @agent.name %></h1>
+<div>
+  <strong>Role:</strong>
+  <%= @agent.role %>
+</div>
+<div>
+  <strong>First name:</strong>
+  <%= @agent.first_name %>
+</div>
+<div>
+  <strong>Last name:</strong>
+  <%= @agent.last_name %>
+</div>
+<div>
+  <strong>Email:</strong>
+  <%= @agent.email %>
+</div>
+<div>
+  <strong>Mobile:</strong>
+  <%= @agent.mobile %>
+</div>
+<div>
+  <strong>Phone:</strong>
+  <%= @agent.phone %>
+</div>
+<div>
+  <strong>Fax:</strong>
+  <%= @agent.fax %>
+</div>
+<div>
+  <strong>Time zone:</strong>
+  <%= @agent.time_zone %>
+</div>
+<div>
+  <%= button_to 'Delete', account_agent_path(@agent.account, @agent), method: :delete %>
+  <%= link_to 'Edit', edit_account_agent_path(@agent.account, @agent) %> |
+  <%= link_to 'Back', account_agents_path(@agent.account) %>
+</div>

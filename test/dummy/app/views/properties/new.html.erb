@@ -1,0 +1,167 @@
+<h1>New property</h1>
+<%= form_for [@account, @property] do |form| %>
+  <%= render partial: 'shared/form_errors', locals: { form_errors: @property } %>
+  <div>
+    <%= form.label :type %>
+    <%= property_types(form) %>
+  </div>
+  <div>
+    <%= form.label :agent_id, "Choose Agent" %>
+    <%= form.collection_select :agent_id, @agents, :id, :name, prompt: 'Select an Agent' %>
+  </div>
+  <div>
+    <%= form.label :internal_id %>
+    <%= form.text_field :internal_id %>
+  </div>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :building %>
+    <%= form.text_field :building %>
+  </div>
+  <div>
+    <%= form.label :estate %>
+    <%= form.text_field :estate %>
+  </div>
+  <div>
+    <%= form.label :floor_level %>
+    <%= form.text_field :floor_level %>
+  </div>
+  <div>
+    <%= form.label :floor %>
+    <%= form.text_field :floor %>
+  </div>
+  <div>
+    <%= form.label :unit_suite_shop %>
+    <%= form.text_field :unit_suite_shop %>
+  </div>
+  <div>
+    <%= form.label :local_council %>
+    <%= form.text_field :local_council %>
+  </div>
+  <div>
+    <%= form.label :land_area_description %>
+    <%= form.text_field :land_area_description %>
+  </div>
+  <div>
+    <%= form.label :hard_stand_yard_description %>
+    <%= form.text_field :hard_stand_yard_description %>
+  </div>
+  <div>
+    <%= form.label :headline %>
+    <%= form.text_field :headline %>
+  </div>
+  <div>
+    <%= form.label :grabline %>
+    <%= form.text_field :grabline %>
+  </div>
+  <div>
+    <%= form.label :keywords %>
+    <%= form.text_field :keywords %>
+  </div>
+  <div>
+    <%= form.label :parking_spaces %>
+    <%= form.number_field :parking_spaces %>
+  </div>
+  <div>
+    <%= form.label :parking_comments %>
+    <%= form.text_field :parking_comments %>
+  </div>
+  <div>
+    <%= form.label :lifts_escalators_travelators %>
+    <%= form.text_field :lifts_escalators_travelators %>
+  </div>
+  <div>
+    <%= form.label :clear_span_columns %>
+    <%= form.text_field :clear_span_columns %>
+  </div>
+  <div>
+    <%= form.label :lot_number %>
+    <%= form.text_field :lot_number %>
+  </div>
+  <div>
+    <%= form.label :crane %>
+    <%= form.text_field :crane %>
+  </div>
+  <div>
+    <%= form.label :entrances_roller_doors_container_access %>
+    <%= form.text_field :entrances_roller_doors_container_access %>
+  </div>
+  <div>
+    <%= form.label :zoning %>
+    <%= form.text_field :zoning %>
+  </div>
+  <div>
+    <%= form.label :disability_access %>
+    <%= form.text_field :disability_access %>
+  </div>
+  <div>
+    <%= form.label :rating %>
+    <%= form.text_field :rating %>
+  </div>
+  <div>
+    <%= form.label :naming_rights %>
+    <%= form.text_field :naming_rights %>
+  </div>
+  <div>
+    <%= form.label :naming_rights_cost_cents %>
+    <%= form.number_field :naming_rights_cost_cents %>
+  </div>
+  <div>
+    <%= form.label :office_area %>
+    <%= form.number_field :office_area %>
+  </div>
+  <div>
+    <%= form.label :warehouse_area %>
+    <%= form.number_field :warehouse_area %>
+  </div>
+  <div>
+    <%= form.label :showroom_area %>
+    <%= form.number_field :showroom_area %>
+  </div>
+  <div>
+    <%= form.label :storage_area %>
+    <%= form.number_field :storage_area %>
+  </div>
+  <div>
+    <%= form.label :production_area %>
+    <%= form.number_field :production_area %>
+  </div>
+  <div>
+    <%= form.label :trading_area %>
+    <%= form.number_field :trading_area %>
+  </div>
+  <div>
+    <%= form.label :floor_area %>
+    <%= form.number_field :floor_area %>
+  </div>
+  <div>
+    <%= form.label :land_area %>
+    <%= form.number_field :land_area %>
+  </div>
+  <div>
+    <%= form.label :hard_stand_yard_area %>
+    <%= form.number_field :hard_stand_yard_area %>
+  </div>
+  <div>
+    <%= form.label :min_clearance_height %>
+    <%= form.number_field :min_clearance_height %>
+  </div>
+  <div>
+    <%= form.label :max_clearance_height %>
+    <%= form.number_field :max_clearance_height %>
+  </div>
+  <div>
+    <%= form.label :calculated_building_area %>
+    <%= form.number_field :calculated_building_area %>
+  </div>
+  <div>
+    <%= form.label :share %>
+    <%= form.check_box :share %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

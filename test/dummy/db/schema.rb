@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_27_103751) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_26_183821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -70,7 +70,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_27_103751) do
     t.string "mobile"
     t.string "phone"
     t.string "fax"
-    t.integer "role", default: 0
+    t.string "time_zone", default: "UTC", null: false
+    t.integer "role", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_agents_on_account_id"
@@ -81,8 +82,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_27_103751) do
   create_table "cities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "state_id", null: false
     t.uuid "district_id"
-    t.string "name"
-    t.text "description"
+    t.string "name", comment: "City name"
+    t.text "description", comment: "City description, used on the website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["district_id"], name: "index_cities_on_district_id"
@@ -208,7 +209,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_27_103751) do
     t.string "grabline"
     t.string "keywords"
     t.integer "parking_spaces"
-    t.string "parking_commentslifts_escalators_travelators"
+    t.string "parking_comments"
+    t.string "lifts_escalators_travelators"
     t.string "clear_span_columns"
     t.string "lot_number"
     t.string "crane"
@@ -216,6 +218,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_27_103751) do
     t.string "zoning"
     t.string "disability_access"
     t.string "rating"
+    t.string "naming_rights"
+    t.bigint "naming_rights_cost_cents"
     t.decimal "office_area", precision: 10, scale: 2
     t.decimal "warehouse_area", precision: 10, scale: 2
     t.decimal "showroom_area", precision: 10, scale: 2
@@ -228,11 +232,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_27_103751) do
     t.decimal "min_clearance_height", precision: 10, scale: 2
     t.decimal "max_clearance_height", precision: 10, scale: 2
     t.decimal "calculated_building_area"
+    t.boolean "share", default: false
+    t.datetime "archived_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "city_id"
     t.uuid "postal_code_id"
-    t.datetime "archived_at"
     t.index ["agent_id"], name: "index_properties_on_agent_id"
     t.index ["city_id"], name: "index_properties_on_city_id"
     t.index ["postal_code_id"], name: "index_properties_on_postal_code_id"
