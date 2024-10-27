@@ -15,10 +15,18 @@ class Property < ApplicationRecord
   has_many_attached :photos
   has_many_attached :files
 
+  has_rich_text :brochure_description
+  has_rich_text :fit_out
+  has_rich_text :furniture
+  has_rich_text :notes
+  has_rich_text :website_description
+
   scope :latest_n, ->(n) { order(:updated_at).limit(n) }
   scope :for_sale,  -> { joins(:contract).where(contract: { for_sale:  true }) }
   scope :for_lease, -> { joins(:contract).where(contract: { for_lease: true }) }
-  scope :available, -> { where(archived_at: nil).joins(:contract).where(contract: { for_sale:  true }).or(joins(:contract).where(contract: { for_lease: true })) }
+  scope :available, lambda {
+    where(archived_at: nil).joins(:contract).where(contract: { for_sale: true }).or(joins(:contract).where(contract: { for_lease: true }))
+  }
   scope :commercial, -> { where(type: 'Property::Commercial') }
   scope :industrial, -> { where(type: 'Property::Industrial') }
   scope :retail,     -> { where(type: 'Property::Retail') }
