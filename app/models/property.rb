@@ -18,6 +18,7 @@ class Property < ApplicationRecord
   scope :latest_n, ->(n) { order(:updated_at).limit(n) }
   scope :for_sale,  -> { joins(:contract).where(contract: { for_sale:  true }) }
   scope :for_lease, -> { joins(:contract).where(contract: { for_lease: true }) }
+  scope :available, -> { where(archived_at: nil).joins(:contract).where(contract: { for_sale:  true }).or(joins(:contract).where(contract: { for_lease: true })) }
   scope :commercial, -> { where(type: 'Property::Commercial') }
   scope :industrial, -> { where(type: 'Property::Industrial') }
   scope :retail,     -> { where(type: 'Property::Retail') }
