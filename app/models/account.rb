@@ -18,6 +18,10 @@ class Account < ApplicationRecord
   has_one :website, dependent: :destroy
   has_many :agents, dependent: :destroy
   has_many :properties, through: :agents
+  has_many :commercial_properties,  through: :agents
+  has_many :industrial_properties,  through: :agents
+  has_many :residential_properties, through: :agents
+  has_many :retail_properties,      through: :agents
 
   def website?
     website.present?
